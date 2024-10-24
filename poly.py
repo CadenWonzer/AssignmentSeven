@@ -160,7 +160,13 @@ class LinkedList:
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p):
-        pass
+        result = LinkedList()
+        self_current = self.head
+        p_current = p.head
+        while self_current is not None:
+            while p_current is not None:
+                if result.head == None:
+                    result.head = Node(self.coeff * p.coeff, self.exp + self.exp)
 
     # Return a string representation of the polynomial.
     def __str__(self):
@@ -223,7 +229,8 @@ def main():
             last_node = last_node.next
      
     print(p)
-    print(q)      
+    print(q)     
+    p.add(q) 
 
 
 if __name__ == "__main__":
