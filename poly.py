@@ -140,7 +140,23 @@ class LinkedList:
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p):
-        pass
+        result = LinkedList()
+        p1 = self.head
+        p2 = p.head
+        while p1 or p2:
+            if p1 and (not p2 or p1.exp > p2.exp):
+                result.insert_term(p1.coeff, p1.exp)
+                p1 = p1.next
+            elif p2 and (not p1 or p1.exp < p2.exp):
+                result.insert_term(p2.coeff, p2.exp)
+                p2 = p2.next
+            else:
+                added_coeff = p1.coeff + p2.coeff
+                if added_coeff != 0:
+                    result.insert_term(added_coeff, p1.exp)
+                p1 = p1.next
+                p2 = p2.next
+        return result
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p):
