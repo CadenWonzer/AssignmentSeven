@@ -135,7 +135,14 @@ class LinkedList:
             current = current.next
         
         for i in range(len(coeff_list)):
-            output += f"
+            term = (coeff_list[i], exp_list[i])
+            output += str(term)
+            if i != len(coeff_list) - 1:
+                output += " + "
+            else:
+                break
+        
+        return output
 
 
 def main():
@@ -154,11 +161,29 @@ def main():
     for _ in range(p_terms):
         term_str = input().strip().split()
         if p.head is None:
-            p.head = Node(term_str[0], term_str[1])
+            p.head = Node(int(term_str[0]), int(term_str[1]))
             last_node = p.head
         else:
-            last_node.next = Node(term_str[0], term_str[1])
+            last_node.next = Node(int(term_str[0]), int(term_str[1]))
             last_node = last_node.next
+            
+    input()
+    
+    q = LinkedList()
+    q_terms = int(input())
+    last_node = None
+
+    for _ in range(q_terms):
+        term_str = input().strip().split()
+        if q.head is None:
+            q.head = Node(int(term_str[0]), int(term_str[1]))
+            last_node = q.head
+        else:
+            last_node.next = Node(int(term_str[0]), int(term_str[1]))
+            last_node = last_node.next
+     
+    print(p)
+    print(q)      
 
 
 if __name__ == "__main__":
