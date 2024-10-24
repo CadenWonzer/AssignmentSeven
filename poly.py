@@ -135,7 +135,15 @@ def main():
     # get sum of p and q as a new linked list and print sum
 
     # get product of p and q as a new linked list and print product
-    pass
+    
+    p = LinkedList()
+    p_terms = int(input())
+    last_node = None
+
+    for _ in range(p_terms):
+        term_str = input().strip().split()
+        term = tuple(map(int, term_str))
+        if p.head is None:
 
 
 if __name__ == "__main__":
