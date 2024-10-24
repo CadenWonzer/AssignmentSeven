@@ -124,7 +124,18 @@ class LinkedList:
 
     # Return a string representation of the polynomial.
     def __str__(self):
-        pass
+        output = ""
+        coeff_list = []
+        exp_list = []
+        current = self.head
+        
+        while current is not None:
+            coeff_list.append(current.coeff)
+            exp_list.append(current.exp)
+            current = current.next
+        
+        for i in range(len(coeff_list)):
+            output += f"
 
 
 def main():
@@ -142,8 +153,12 @@ def main():
 
     for _ in range(p_terms):
         term_str = input().strip().split()
-        term = tuple(map(int, term_str))
         if p.head is None:
+            p.head = Node(term_str[0], term_str[1])
+            last_node = p.head
+        else:
+            last_node.next = Node(term_str[0], term_str[1])
+            last_node = last_node.next
 
 
 if __name__ == "__main__":
